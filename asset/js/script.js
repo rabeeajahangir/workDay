@@ -1,3 +1,7 @@
+var taskDataObj = [];
+var tasks = [];
+
+
 //Current day displayed when the planner is opened
 function displayDate() {
     var displayDayEl = document.querySelector("#currentDay");
@@ -90,5 +94,24 @@ function plannerLayout() {
         taskEl.textContent = localStorage.getItem("save"+ hoursOfDay[i].time);
         taskElDisplay.appendChild(taskEl);
 //Click to save event
+var saveBtn = document.createElement("button")
+        saveBtn.className = "saveBtn"
+        saveBtn.textContent = "Save"
+        saveBtn.id = "save"+ hoursOfDay[i].time
+        saveBtn.addEventListener("click", saveTask);
+        saveContainer.appendChild(saveBtn)
+        
+        timeBlockContainer.appendChild(taskElDisplay);
+        timeBlockContainer.appendChild(saveContainer);
+        calendarContainer.appendChild(timeBlockContainer);
 
+        //put info as object
+        var taskDataObj = {
+            taskId: taskEl.id,
+            saveBtnId: saveBtn.id,
+            taskTime: hoursOfDay[i].time,
+            taskInput: taskEl.textContent
+        }
+        tasks.push(taskDataObj)
+    }
 //Saved events persist when the page is refreshed.
