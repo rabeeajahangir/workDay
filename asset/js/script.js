@@ -162,3 +162,11 @@ function checkStatus() {
         }
     }
 };
+
+function saveTask(event, taskDataObj) {
+    var num = event.target.id.split("").filter(Number).join("")
+    localStorage.setItem(event.target.id, document.querySelector(`#task-item-${num}`).value)
+ }
+ 
+ displayDate();
+ setInterval(checkStatus(), (1000 * 60) * 1);
