@@ -9,6 +9,8 @@ function displayDate() {
     var currentDay = moment().format("dddd[,] MMMM Do[,] YYYY");
     displayDayEl.textContent = currentDay;
     console.log(currentDay);
+    plannerLayout();
+    checkStatus();
     
 }
 //Standard time blocks for business hours
@@ -77,6 +79,7 @@ function plannerLayout() {
         timeElDisplay.className = "col-2 time-block hour";
         timeElDisplay.id = "time-hour-" + hoursOfDay[i].time;
         timeElDisplay.textContent = hoursOfDay[i].time + hoursOfDay[i].meridiem;
+        timeElDisplay.styleAttribute = ('style', 'background color: red');
         timeBlockContainer.appendChild(timeElDisplay);
 
         //create div for TASK container
@@ -93,6 +96,10 @@ function plannerLayout() {
         taskEl.id = "task-item-" + hoursOfDay[i].time
         taskEl.textContent = localStorage.getItem("save"+ hoursOfDay[i].time);
         taskElDisplay.appendChild(taskEl);
+
+        //create div to hold SAVE button
+        var saveContainer = document.createElement("div")
+        saveContainer.className = "col-1 btn-container row"
 //Click to save event
 var saveBtn = document.createElement("button")
         saveBtn.className = "saveBtn"
@@ -147,7 +154,7 @@ function checkStatus() {
             .removeClass("future")
             .addClass("present");
         }
-        
+
         else if (currentTime < hoursOfDay[i].military) {
             
             $("#time-hour-" + hoursOfDay[i].time)

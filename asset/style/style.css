@@ -40,6 +40,12 @@ body {
     background-color: #ffffff;
     color: #000000;
     border-top: 1px dashed #000000;
+    border-bottom: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-radius: 10px;
+    font-size: 25px;
+    padding: 22px 0 0 0;
+}
   }
   
   .past {
@@ -63,6 +69,17 @@ body {
     border-bottom-right-radius: 15px;
     background-color: #06AED5;
     color: white;
+  
+  }
+  .btn-container {
+    background-color: #06AED5;
+    text-align: center;
+    border: none;
+    background-color: #06AED5;
+    color: white;
+    border-radius: 10px;
+    padding-left: 2px;
+    margin-left: 1px;
   }
   
   .saveBtn i:hover {
