@@ -79,7 +79,6 @@ function plannerLayout() {
         timeElDisplay.className = "col-2 time-block hour";
         timeElDisplay.id = "time-hour-" + hoursOfDay[i].time;
         timeElDisplay.textContent = hoursOfDay[i].time + hoursOfDay[i].meridiem;
-        timeElDisplay.styleAttribute = ('style', 'background color: red');
         timeBlockContainer.appendChild(timeElDisplay);
 
         //create div for TASK container
