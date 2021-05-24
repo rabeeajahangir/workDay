@@ -114,4 +114,51 @@ var saveBtn = document.createElement("button")
         }
         tasks.push(taskDataObj)
     }
-//Saved events persist when the page is refreshed.
+    checkStatus();
+};
+
+function checkStatus() {
+    var currentTime = moment().hour();
+
+    for (var i = 0; i < hoursOfDay.length; i++) {
+
+        if (currentTime > hoursOfDay[i].military) {
+
+            $("#time-hour-" + hoursOfDay[i].time)
+            .removeClass("present")
+            .removeClass("future")
+            .addClass("past");
+
+            $("#task-container-" + hoursOfDay[i].time)
+            .removeClass("present")
+            .removeClass("future")
+            .addClass("past");
+        }
+        
+        else if (currentTime === hoursOfDay[i].military) {
+
+            $("#time-hour-" + hoursOfDay[i].time)
+            .removeClass("past")
+            .removeClass("future")
+            .addClass("present");
+
+            $("#task-container-" + hoursOfDay[i].time)
+            .removeClass("past")
+            .removeClass("future")
+            .addClass("present");
+        }
+        
+        else if (currentTime < hoursOfDay[i].military) {
+            
+            $("#time-hour-" + hoursOfDay[i].time)
+            .removeClass("present")
+            .removeClass("past")
+            .addClass("future");
+
+            $("#task-container-" + hoursOfDay[i].time)
+            .removeClass("present")
+            .removeClass("past")
+            .addClass("future");
+        }
+    }
+};
